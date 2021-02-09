@@ -3,18 +3,21 @@ session_start();
 require 'connexion_bdd.php';
 $db = connexionBase();
 include ('entete.php');
+
 ?>
-<!-- barre ajout de client  -->
+<!-- ***********************Barre modification du client******************************************** -->
 <div class="row shadow mt-3 mb-3 mx-0 p-3 rounded bg-dark">
   <div class="col-md-2 text white-50 text-right"></div>
-    <div class="col-md-8 h2 text-white-50 text-center">L'ajout de client</div>
+    <div class="col-md-8 h2 text-white-50 text-center">Modification de client</div>
         <div class="col-2 text-center"></div>
 </div>
-<!-- *********************** formulaire************************************************************************* -->
-<form method = "POST" action = "clientsAjoutScript.php">
+
+<!-- ********************************        formulaire                **********************************************-->
+
+<form method = "POST" action = "clientsModifierScript.php">
     <div class="form-group">
             <label  for="nom">Nom</label>
-            <input type="text" name="nom" class="form-control">
+            <input type="text" name="nom" class="form-control" value ="<?php echo $_SESSION ['nom'] ?? '';unset($_SESSION['nom']);?>">
             <?php 
             if (isset($_SESSION['errors']))
             {
@@ -33,7 +36,7 @@ include ('entete.php');
     <div class="form-group">
     
             <label  for="prenom">Prenom</label>
-            <input type="text" name="prenom" class="form-control">
+            <input type="text" name="prenom" class="form-control"value = "<?php echo $_SESSION ['prenom'] ?? '';unset($_SESSION['prenom']);?>">
             <?php
             if (isset($_SESSION['errors']))
             {
@@ -52,7 +55,7 @@ include ('entete.php');
     <div class="form-group">
     
             <label  for="adresse" >Adresse</label>
-            <input type="text" name="adresse" class="form-control">
+            <input type="text" name="adresse" class="form-control" value ="<?php echo $_SESSION ['adresse'] ?? '';unset($_SESSION['adresse']);?>">
             <?php
             if (isset($_SESSION['errors']))
             {
@@ -70,7 +73,7 @@ include ('entete.php');
     </div> 
     <div class="form-group">
             <label  for="codePostal">Code postale</label>
-            <input type="text" name="codePostal" class="form-control">
+            <input type="text" name="codePostal" class="form-control" value ="<?php echo $_SESSION ['codePostal'] ?? '';unset($_SESSION['codePostal']);?>">
             <?php
             if (isset($_SESSION['errors']))
             {
@@ -88,7 +91,7 @@ include ('entete.php');
     </div>
     <div class="form-group">
             <label  for="ville">ville</label>
-            <input type="text" name="ville" class="form-control">
+            <input type="text" name="ville" class="form-control" value = "<?php echo $_SESSION ['ville'] ?? '';unset($_SESSION['ville']);?>">
             
             <?php
             if (isset($_SESSION['errors']))
@@ -107,7 +110,7 @@ include ('entete.php');
     </div>
     <div class="form-group">
             <label  for="telephone">téléphone</label>
-            <input type="text" name="telephone" class="form-control">
+            <input type="text" name="telephone" class="form-control" value ="<?php echo $_SESSION ['telephone'] ?? '';unset($_SESSION['telephone']);?>">
             
             <?php
             if (isset($_SESSION['errors']))
@@ -126,7 +129,7 @@ include ('entete.php');
     </div>
     <div class="form-group">
             <label  for="email">email</label>
-            <input type="text" name="email" class="form-control">
+            <input type="text" name="email" class="form-control" value ="<?php echo $_SESSION ['email'] ?? '';unset($_SESSION['email']);?>">
             
             <?php
             if (isset($_SESSION['errors']))
@@ -145,7 +148,7 @@ include ('entete.php');
     </div>
     <div class="form-group">
             <label  for="metier">Métier</label>
-            <input type="text" name="metier" class="form-control">
+            <input type="text" name="metier" class="form-control" value ="<?php echo $_SESSION ['metier'] ?? '';unset($_SESSION['metier']);?>">
             
     <?php
     if (isset($_SESSION['errors']))
@@ -164,7 +167,7 @@ include ('entete.php');
     </div>
     <div class="form-group">
             <label for="commentaire">commentaire</label>
-            <textarea type="text" name="commentaire" class="form-control"></textarea>
+            <textarea type="text" name="commentaire" class="form-control"><?php echo $_SESSION ['commentaire'] ?? '';?></textarea>
             <?php
     if (isset($_SESSION['errors']))
     {
@@ -183,8 +186,8 @@ include ('entete.php');
 
 
     <div class="form-actions">
-                 <input type="submit" class="btn btn-success" name="submit" value="Ajouter">
-                 <a class="btn" href="clients.php">Retour</a>
+                <input type="submit" class="btn btn-success" name="submit" value="Modifier">
+                <a class="btn" href="clients.php">Retour</a>
     </div>
 </form>
 <p>
@@ -193,10 +196,4 @@ include ('entete.php');
 include('pieddepage.php');
 ?>
 </p>
-
-
-
-
-
-
 
